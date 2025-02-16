@@ -1,0 +1,226 @@
+body {
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f2f5;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.grid-container {
+    columns: 4;
+    column-gap: 12px;
+    padding: 12px;
+}
+
+.ride-card {
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 12px;
+    break-inside: avoid;
+    display: inline-block;
+    width: 100%;
+}
+
+/* Varying heights */
+.ride-card:nth-child(3n+1) {
+    height: 200px;
+}
+.ride-card:nth-child(3n+2) {
+    height: 250px;
+}
+.ride-card:nth-child(3n+3) {
+    height: 300px;
+}
+
+/* Rest of your styles remain the same */
+.product-type {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #666;
+    letter-spacing: -0.2px;
+}
+
+.ride-info {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.ride-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+.ride-card.morning:hover {
+    background-color: #FFF3B0;
+}
+
+.ride-card.evening:hover {
+    background-color: #E0B1CB;
+}
+
+.ride-card.night:hover {
+    background-color: #1A365D;
+}
+
+.ride-card.night:hover .ride-info .label,
+.ride-card.night:hover .ride-info .value,
+.ride-card.night:hover .product-type {
+    color: #fff !important;
+}
+
+.metric {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.label {
+    font-size: 11px;
+    color: #666;
+    margin: 0;
+    letter-spacing: 0.2px;
+}
+
+.value {
+    font-size: 15px;
+    font-weight: 600;
+    color: #000;
+    margin: 0;
+    letter-spacing: -0.2px;
+}
+
+.value .unit {
+    font-weight: 600;
+    font-size: 13px;
+    color: #666;
+}
+
+@media (max-width: 1200px) {
+    .grid-container {
+        columns: 3;
+    }
+}
+
+@media (max-width: 900px) {
+    .grid-container {
+        columns: 2;
+    }
+}
+
+@media (max-width: 600px) {
+    .grid-container {
+        columns: 1;
+    }
+}
+
+.time-overlay {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.ride-card:hover .time-overlay {
+    opacity: 1;
+}
+
+/* Add a surge pricing indicator */
+.surge-indicator {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #FFE4E4;
+    color: #D32F2F;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+/* Show demand level (e.g., "High Demand") */
+.demand-badge {
+    position: absolute;
+    top: 52px;
+    right: 20px;
+    background: #FFF3E0;
+    color: #E65100;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.ride-card:hover .surge-indicator,
+.ride-card:hover .demand-badge {
+    opacity: 1;
+}
+
+/* Add this new style for per km rate */
+.per-km-rate {
+    position: absolute;
+    bottom: 68px;  
+    right: 20px;   
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    gap: 4px;  /* Increased gap between label and value */
+}
+
+.per-km-rate .label {
+    font-size: 11px;
+    color: #666;
+    margin: 0;
+    letter-spacing: 0.2px;
+    line-height: 11px;
+}
+
+.per-km-rate .value {
+    font-size: 15px;
+    font-weight: 600;
+    color: #000;
+    margin: 0;
+    letter-spacing: -0.2px;
+    line-height: 15px;
+}
+
+.ride-card:hover .per-km-rate {
+    opacity: 1;
+}
+
+.ride-card.night:hover .per-km-rate .label,
+.ride-card.night:hover .per-km-rate .value {
+    color: #fff !important;
+}
